@@ -1,0 +1,1435 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101010" />
+    <title>DeutschTest | Arslen Ayadi</title>
+
+    <style>
+      :root {
+        --bg: #101010;
+        --panel: #1b1b1b;
+        --panel2: #292929;
+        --text: #ffffff;
+        --muted: #bdbdbd;
+        --red: #dd0000;
+        --gold: #ffce00;
+        --border: #414141;
+        --green: #36d399;
+        --bad: #ff7085;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+        background: radial-gradient(ellipse at top, #303030, var(--bg) 70%);
+      }
+      button,
+      select {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      button:hover {
+        transform: translateY(-2px);
+      }
+      a {
+        color: inherit;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        padding: 18px max(5%, calc((100% - 1050px) / 2));
+        border-bottom: 1px solid var(--border);
+        background: #101010ee;
+      }
+      .logo {
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: 1px;
+      }
+      .logo span:last-child {
+        color: var(--gold);
+      }
+      .flag {
+        display: inline-flex;
+        flex-direction: column;
+        width: 23px;
+        height: 15px;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+      .flag i {
+        height: 33.33%;
+      }
+      .flag i:nth-child(1) {
+        background: #000;
+      }
+      .flag i:nth-child(2) {
+        background: #dd0000;
+      }
+      .flag i:nth-child(3) {
+        background: #ffce00;
+      }
+      select {
+        background: var(--panel);
+        color: white;
+        border: 1px solid var(--border);
+        padding: 10px;
+        border-radius: 10px;
+      }
+      main {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 0 17px 45px;
+      }
+      .hero {
+        text-align: center;
+        margin: 32px 0 25px;
+      }
+      .eyebrow {
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+      h1 {
+        font-size: clamp(32px, 6vw, 49px);
+        margin: 15px 0;
+      }
+      h1 span {
+        color: var(--gold);
+      }
+      p {
+        line-height: 1.7;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: clamp(18px, 4vw, 30px);
+        box-shadow: 0 20px 60px #0004;
+      }
+      .hero-image {
+        position: relative;
+        height: 285px;
+        border-radius: 17px;
+        overflow: hidden;
+        margin: 25px 0;
+        background: #292929;
+        border: 1px solid #444;
+      }
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.55);
+      }
+      .image-caption {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(90deg, #0009, #0002);
+      }
+      .image-caption h2 {
+        font-size: clamp(23px, 4vw, 35px);
+        margin: 14px 0 4px;
+      }
+      .image-caption p {
+        color: var(--gold);
+        font-weight: bold;
+        margin: 0;
+      }
+      .flag-bar {
+        display: flex;
+        width: 90px;
+        height: 9px;
+        flex-direction: column;
+      }
+      .flag-bar span {
+        height: 33.33%;
+      }
+      .flag-bar span:nth-child(1) {
+        background: #000;
+      }
+      .flag-bar span:nth-child(2) {
+        background: #dd0000;
+      }
+      .flag-bar span:nth-child(3) {
+        background: #ffce00;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin: 20px 0;
+      }
+      .info {
+        background: var(--panel2);
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+      }
+      .info strong {
+        display: block;
+        font-size: 23px;
+        margin-bottom: 7px;
+      }
+      .info small {
+        color: var(--muted);
+      }
+      .levels {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 20px 0;
+      }
+      .level {
+        background: var(--panel2);
+        border: 1px solid var(--border);
+        padding: 8px 12px;
+        border-radius: 9px;
+        color: #ddd;
+        font-size: 13px;
+      }
+      .btn {
+        border: 0;
+        border-radius: 11px;
+        padding: 13px 19px;
+        font-weight: bold;
+        background: linear-gradient(110deg, #dd0000, #ffce00);
+        color: #111;
+      }
+      .btn.secondary {
+        background: var(--panel2);
+        color: white;
+        border: 1px solid var(--border);
+      }
+      .primary {
+        width: 100%;
+        padding: 16px;
+        margin-top: 8px;
+      }
+      .btn:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+        transform: none;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .progress-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .timer {
+        color: var(--gold);
+        font-weight: bold;
+      }
+      .timer.warning {
+        color: var(--bad);
+      }
+      .track {
+        height: 8px;
+        background: #3b3b3b;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 25px;
+      }
+      .fill {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, #dd0000, #ffce00);
+        transition: width 0.25s;
+      }
+      .tag {
+        display: inline-block;
+        background: #453800;
+        color: var(--gold);
+        padding: 7px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: bold;
+      }
+      .question {
+        font-size: clamp(21px, 4vw, 29px);
+        line-height: 1.45;
+        margin: 20px 0 25px;
+      }
+      .options {
+        display: grid;
+        gap: 12px;
+      }
+      .option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        text-align: left;
+        padding: 15px;
+        border-radius: 12px;
+        background: var(--panel2);
+        color: white;
+        border: 1px solid var(--border);
+      }
+      .option:hover {
+        border-color: var(--gold);
+      }
+      .option.selected {
+        border-color: var(--gold);
+        background: #393015;
+      }
+      .letter {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+        border-radius: 8px;
+        background: #404040;
+        font-weight: bold;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .nav button {
+        min-width: 105px;
+      }
+      .feedback {
+        background: var(--panel2);
+        padding: 16px;
+        border-radius: 12px;
+        margin-top: 18px;
+        line-height: 1.7;
+      }
+      .score {
+        font-size: 66px;
+        font-weight: 900;
+        margin: 15px 0;
+        letter-spacing: -2px;
+      }
+      .score small {
+        font-size: 22px;
+        color: var(--muted);
+        letter-spacing: 0;
+      }
+      .result-level {
+        font-size: 27px;
+        color: var(--gold);
+        font-weight: bold;
+      }
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 25px 0;
+      }
+      .stat {
+        background: var(--panel2);
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+      }
+      .stat strong {
+        display: block;
+        font-size: 22px;
+        margin-bottom: 7px;
+      }
+      .advice {
+        padding: 15px;
+        border-radius: 12px;
+        background: #292929;
+        border-left: 4px solid var(--gold);
+        margin: 10px 0;
+      }
+      .review-item {
+        padding: 17px 0;
+        border-bottom: 1px solid var(--border);
+        line-height: 1.7;
+      }
+      .review-item h3 {
+        font-size: 17px;
+      }
+      .review-answer {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .good {
+        color: var(--green);
+      }
+      .bad {
+        color: var(--bad);
+      }
+      .about {
+        text-align: center;
+        margin-top: 28px;
+      }
+      .about p {
+        max-width: 650px;
+        margin: 15px auto;
+      }
+      .socials {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 22px;
+      }
+      .social {
+        display: inline-block;
+        text-decoration: none;
+        padding: 12px 18px;
+        border-radius: 10px;
+        background: var(--panel2);
+        border: 1px solid var(--border);
+      }
+      .social:hover {
+        border-color: var(--gold);
+      }
+      .social.red {
+        background: #dd0000;
+        border-color: #dd0000;
+      }
+      .signature {
+        color: var(--gold);
+        font-weight: bold;
+        margin-top: 24px !important;
+      }
+      footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px;
+        padding: 20px;
+      }
+      @media (max-width: 550px) {
+        .grid,
+        .stat-grid {
+          grid-template-columns: 1fr;
+        }
+        .info {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-align: left;
+        }
+        .info strong {
+          margin: 0;
+        }
+        .hero-image {
+          height: 220px;
+        }
+        .nav button {
+          flex: 1;
+          min-width: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <span class="flag"><i></i><i></i><i></i></span>Deutsch<span>Test</span>
+      </div>
+      <select id="language" aria-label="Website language">
+        <option value="en">🇬🇧 English</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="de">🇩🇪 Deutsch</option>
+      </select>
+    </header>
+
+    <main>
+      <section id="welcome" class="hero">
+        <div class="eyebrow" data-t="eyebrow">
+          YOUR GERMAN JOURNEY STARTS HERE
+        </div>
+        <h1 data-t="title">Discover your <span>German level.</span></h1>
+        <p class="muted" data-t="intro">
+          Test your German from beginner A1 to advanced C2.
+        </p>
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1200&q=85"
+            alt="Brandenburg Gate in Berlin, Germany"
+          />
+          <div class="image-caption">
+            <div class="flag-bar"><span></span><span></span><span></span></div>
+            <h2>Deutsch lernen. Deine Zukunft gestalten.</h2>
+            <p>Learn German. Shape your future.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="startCard" class="card">
+        <div class="grid">
+          <div class="info">
+            <strong>50</strong><small data-t="questions">Questions</small>
+          </div>
+          <div class="info">
+            <strong>30 <span data-t="min">min</span></strong
+            ><small data-t="time">Time limit</small>
+          </div>
+          <div class="info">
+            <strong>A1–C2</strong><small data-t="six">Six CEFR levels</small>
+          </div>
+        </div>
+        <h3 data-t="what">What will you practise?</h3>
+        <p class="muted" data-t="whatText">
+          German grammar, vocabulary, verb forms and sentence structure.
+        </p>
+        <div class="levels">
+          <span class="level">A1 · Beginner</span
+          ><span class="level">A2 · Elementary</span>
+          <span class="level">B1 · Intermediate</span
+          ><span class="level">B2 · Upper intermediate</span>
+          <span class="level">C1 · Advanced</span
+          ><span class="level">C2 · Proficient</span>
+        </div>
+        <p class="muted" data-t="note">
+          Choose one answer for each question. This practice test is not an
+          official certificate.
+        </p>
+        <button id="startBtn" class="btn primary" data-t="start">
+          Start the test →
+        </button>
+      </section>
+
+      <section id="quiz" class="card hidden">
+        <div class="progress-row">
+          <span id="questionCount">Question 1 / 50</span>
+          <span id="timer" class="timer">30:00</span>
+        </div>
+        <div class="track"><div id="progress" class="fill"></div></div>
+        <span id="levelTag" class="tag">A1 · Beginner</span>
+        <h2 id="question" class="question"></h2>
+        <div id="options" class="options"></div>
+        <div id="feedback" class="feedback hidden"></div>
+        <div class="nav">
+          <button id="prevBtn" class="btn secondary" data-t="previous">
+            ← Previous
+          </button>
+          <button id="nextBtn" class="btn" data-t="next">Next →</button>
+        </div>
+      </section>
+
+      <section id="result" class="card hidden">
+        <div class="eyebrow" data-t="complete">TEST COMPLETED</div>
+        <h1 data-t="resultTitle">Your results</h1>
+        <div id="score" class="score">0 <small>/ 50</small></div>
+        <div id="resultLevel" class="result-level">A1 · Beginner</div>
+        <p id="resultDescription" class="muted"></p>
+        <div class="stat-grid">
+          <div class="stat">
+            <strong id="percent">0%</strong
+            ><small data-t="accuracy">Accuracy</small>
+          </div>
+          <div class="stat">
+            <strong id="correctCount">0</strong
+            ><small data-t="correct">Correct answers</small>
+          </div>
+          <div class="stat">
+            <strong id="timeUsed">0:00</strong
+            ><small data-t="elapsed">Time used</small>
+          </div>
+        </div>
+        <h3 data-t="adviceTitle">Your learning plan</h3>
+        <div id="advice"></div>
+        <div class="nav">
+          <button id="reviewBtn" class="btn secondary" data-t="review">
+            Review answers
+          </button>
+          <button id="retryBtn" class="btn" data-t="retry">Try again ↻</button>
+        </div>
+      </section>
+
+      <section id="review" class="card hidden">
+        <h1 data-t="reviewTitle">Answer review</h1>
+        <p class="muted" data-t="reviewText">
+          See your answers and explanations.
+        </p>
+        <div id="reviewList"></div>
+        <div class="nav">
+          <button id="backResultBtn" class="btn secondary" data-t="backResult">
+            ← Results
+          </button>
+          <button id="retryBtn2" class="btn" data-t="retry">Try again ↻</button>
+        </div>
+      </section>
+
+      <!-- ABOUT THE CREATOR -->
+      <section class="card about" id="about-me">
+        <div class="flag-bar" style="margin: 0 auto 20px">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="eyebrow" data-t="creatorLabel">ABOUT THE CREATOR</div>
+        <h2 style="font-size: 30px; margin: 14px 0">
+          <span style="color: #ffce00">Arslen Ayadi</span>
+        </h2>
+        <p class="muted" data-t="creatorRole">
+          Student · Aspiring Web Developer · Language Learner
+        </p>
+        <p data-t="creatorBio">
+          I'm Arslen Ayadi, a student interested in programming, web development
+          and learning languages. I created DeutschTest to help learners
+          practise German and discover their approximate language level.
+        </p>
+        <div class="socials">
+          <a
+            class="social"
+            href="https://www.instagram.com/arslen_ayedi/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Instagram ↗</a
+          >
+          <a
+            class="social red"
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Facebook ↗</a
+          >
+          <a class="social" href="mailto:hello@example.com" data-t="contact"
+            >Contact me ✉</a
+          >
+        </div>
+        <p class="signature">© 2026 Arslen Ayadi · DeutschTest</p>
+        <p class="muted" style="font-size: 12px" data-t="madeWith">
+          Made with passion for learning and technology.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      DeutschTest · A1–C2 ·
+      <span data-t="footer">Practice, learn and improve every day.</span>
+    </footer>
+
+    <script>
+      const translations = {
+        en: {
+          eyebrow: "YOUR GERMAN JOURNEY STARTS HERE",
+          title: "Discover your <span>German level.</span>",
+          intro: "Test your German from beginner A1 to advanced C2.",
+          questions: "Questions",
+          min: "min",
+          time: "Time limit",
+          six: "Six CEFR levels",
+          what: "What will you practise?",
+          whatText:
+            "German grammar, vocabulary, verb forms and sentence structure.",
+          note: "Choose one answer for each question. This practice test is not an official certificate.",
+          start: "Start the test →",
+          previous: "← Previous",
+          next: "Next →",
+          finish: "Finish ✓",
+          complete: "TEST COMPLETED",
+          resultTitle: "Your results",
+          accuracy: "Accuracy",
+          correct: "Correct answers",
+          elapsed: "Time used",
+          adviceTitle: "Your learning plan",
+          review: "Review answers",
+          retry: "Try again ↻",
+          reviewTitle: "Answer review",
+          reviewText: "See your answers and explanations.",
+          backResult: "← Results",
+          footer: "Practice, learn and improve every day.",
+          question: "Question",
+          of: "of",
+          beginner: "Beginner",
+          levels: [
+            "Beginner",
+            "Elementary",
+            "Intermediate",
+            "Upper intermediate",
+            "Advanced",
+            "Proficient",
+          ],
+          descriptions: [
+            "Start with the basic foundations of German.",
+            "You show an elementary understanding of German.",
+            "You have some intermediate German skills.",
+            "You show a good command of many German structures.",
+            "You demonstrate strong grammar and vocabulary skills.",
+            "Excellent result on this practice test.",
+          ],
+          scoreText: "You answered {n} of 50 questions correctly ({p}%).",
+          explanation: "Explanation",
+          yourAnswer: "Your answer",
+          correctAnswer: "Correct answer",
+          unanswered: "Not answered",
+          right: "Correct",
+          wrong: "Incorrect",
+          adviceLow:
+            "Start with A1 basics: articles, present tense, common vocabulary and simple sentences.",
+          adviceMid:
+            "Practise everyday conversations, past tense, cases and word order. Review the questions you missed.",
+          adviceHigh:
+            "Improve your fluency by reading German articles, listening to native speakers and practising complex grammar.",
+          adviceTop:
+            "Great work! Practise nuanced expressions, advanced writing and authentic German materials.",
+          confirmFinish: "Finish the test and see your results?",
+          timeUp: "Time is up! Your test will be submitted.",
+          creatorLabel: "ABOUT THE CREATOR",
+          creatorRole: "Student · Aspiring Web Developer · Language Learner",
+          creatorBio:
+            "I'm Arslen Ayadi, a student interested in programming, web development and learning languages. I created DeutschTest to help learners practise German and discover their approximate language level.",
+          contact: "Contact me ✉",
+          madeWith: "Made with passion for learning and technology.",
+        },
+        fr: {
+          eyebrow: "VOTRE PARCOURS EN ALLEMAND COMMENCE ICI",
+          title: "Découvrez votre <span>niveau d’allemand.</span>",
+          intro:
+            "Évaluez votre allemand du niveau débutant A1 au niveau avancé C2.",
+          questions: "Questions",
+          min: "min",
+          time: "Durée limite",
+          six: "Six niveaux du CECR",
+          what: "Que allez-vous pratiquer ?",
+          whatText:
+            "La grammaire, le vocabulaire, les verbes et la structure des phrases en allemand.",
+          note: "Choisissez une réponse par question. Ce test d’entraînement n’est pas un certificat officiel.",
+          start: "Commencer le test →",
+          previous: "← Précédent",
+          next: "Suivant →",
+          finish: "Terminer ✓",
+          complete: "TEST TERMINÉ",
+          resultTitle: "Vos résultats",
+          accuracy: "Précision",
+          correct: "Bonnes réponses",
+          elapsed: "Temps utilisé",
+          adviceTitle: "Votre plan d’apprentissage",
+          review: "Corriger mes réponses",
+          retry: "Recommencer ↻",
+          reviewTitle: "Correction des réponses",
+          reviewText: "Consultez vos réponses et les explications.",
+          backResult: "← Résultats",
+          footer: "Pratiquez, apprenez et progressez chaque jour.",
+          question: "Question",
+          of: "sur",
+          levels: [
+            "Débutant",
+            "Élémentaire",
+            "Intermédiaire",
+            "Intermédiaire supérieur",
+            "Avancé",
+            "Maîtrise",
+          ],
+          descriptions: [
+            "Commencez par les bases de l’allemand.",
+            "Vous avez une compréhension élémentaire de l’allemand.",
+            "Vous possédez quelques compétences intermédiaires.",
+            "Vous maîtrisez bien de nombreuses structures allemandes.",
+            "Vous démontrez une bonne maîtrise de la grammaire et du vocabulaire.",
+            "Très bon résultat à ce test d’entraînement.",
+          ],
+          scoreText: "Vous avez obtenu {n} bonnes réponses sur 50 ({p} %).",
+          explanation: "Explication",
+          yourAnswer: "Votre réponse",
+          correctAnswer: "Bonne réponse",
+          unanswered: "Sans réponse",
+          right: "Correct",
+          wrong: "Incorrect",
+          adviceLow:
+            "Commencez par les bases A1 : articles, présent, vocabulaire courant et phrases simples.",
+          adviceMid:
+            "Pratiquez les conversations courantes, le passé, les cas et l’ordre des mots. Révisez vos erreurs.",
+          adviceHigh:
+            "Progressez en lisant des articles, en écoutant des germanophones et en travaillant la grammaire complexe.",
+          adviceTop:
+            "Excellent travail ! Approfondissez les expressions, l’écriture avancée et les ressources authentiques.",
+          confirmFinish: "Terminer le test et afficher les résultats ?",
+          timeUp: "Le temps est écoulé ! Le test va être envoyé.",
+          creatorLabel: "À PROPOS DU CRÉATEUR",
+          creatorRole:
+            "Étudiant · Futur développeur web · Apprenant de langues",
+          creatorBio:
+            "Je suis Arslen Ayadi, un étudiant intéressé par la programmation, le développement web et les langues. J’ai créé DeutschTest pour aider les apprenants à pratiquer l’allemand et à estimer leur niveau.",
+          contact: "Me contacter ✉",
+          madeWith: "Créé avec passion pour l’apprentissage et la technologie.",
+        },
+        de: {
+          eyebrow: "DEINE DEUTSCHREISE BEGINNT HIER",
+          title: "Entdecke dein <span>Deutschniveau.</span>",
+          intro:
+            "Teste dein Deutsch von A1 für Anfänger bis C2 für Fortgeschrittene.",
+          questions: "Fragen",
+          min: "Min.",
+          time: "Zeitlimit",
+          six: "Sechs GER-Niveaus",
+          what: "Was wirst du üben?",
+          whatText: "Deutsche Grammatik, Wortschatz, Verbformen und Satzbau.",
+          note: "Wähle für jede Frage eine Antwort. Dieser Übungstest ist kein offizielles Zertifikat.",
+          start: "Test starten →",
+          previous: "← Zurück",
+          next: "Weiter →",
+          finish: "Beenden ✓",
+          complete: "TEST ABGESCHLOSSEN",
+          resultTitle: "Dein Ergebnis",
+          accuracy: "Genauigkeit",
+          correct: "Richtige Antworten",
+          elapsed: "Benötigte Zeit",
+          adviceTitle: "Dein Lernplan",
+          review: "Antworten ansehen",
+          retry: "Nochmal versuchen ↻",
+          reviewTitle: "Antworten überprüfen",
+          reviewText: "Sieh dir deine Antworten und Erklärungen an.",
+          backResult: "← Ergebnis",
+          footer: "Übe, lerne und verbessere dich jeden Tag.",
+          question: "Frage",
+          of: "von",
+          levels: [
+            "Anfänger",
+            "Grundkenntnisse",
+            "Mittelstufe",
+            "Gute Mittelstufe",
+            "Fortgeschritten",
+            "Exzellent",
+          ],
+          descriptions: [
+            "Beginne mit den deutschen Grundlagen.",
+            "Du zeigst grundlegende Deutschkenntnisse.",
+            "Du hast einige Deutschkenntnisse auf mittlerem Niveau.",
+            "Du beherrschst viele deutsche Strukturen gut.",
+            "Du zeigst starke Grammatik- und Wortschatzkenntnisse.",
+            "Sehr gute Leistung in diesem Übungstest.",
+          ],
+          scoreText: "Du hast {n} von 50 Fragen richtig beantwortet ({p} %).",
+          explanation: "Erklärung",
+          yourAnswer: "Deine Antwort",
+          correctAnswer: "Richtige Antwort",
+          unanswered: "Nicht beantwortet",
+          right: "Richtig",
+          wrong: "Falsch",
+          adviceLow:
+            "Beginne mit A1-Grundlagen: Artikel, Präsens, häufige Wörter und einfache Sätze.",
+          adviceMid:
+            "Übe Alltagsgespräche, Vergangenheit, Fälle und Satzstellung. Wiederhole deine Fehler.",
+          adviceHigh:
+            "Verbessere dein Deutsch durch Artikel, Muttersprachler und komplexe Grammatik.",
+          adviceTop:
+            "Sehr gut! Übe anspruchsvolle Ausdrücke, fortgeschrittenes Schreiben und authentische Texte.",
+          confirmFinish: "Test beenden und Ergebnis anzeigen?",
+          timeUp: "Die Zeit ist abgelaufen! Dein Test wird ausgewertet.",
+          creatorLabel: "ÜBER DEN AUTOR",
+          creatorRole: "Schüler · Angehender Webentwickler · Sprachlernender",
+          creatorBio:
+            "Ich bin Arslen Ayadi, ein Schüler mit Interesse an Programmierung, Webentwicklung und Sprachen. Ich habe DeutschTest erstellt, damit Lernende Deutsch üben und ihr ungefähres Sprachniveau einschätzen können.",
+          contact: "Kontakt ✉",
+          madeWith: "Mit Leidenschaft für Lernen und Technologie erstellt.",
+        },
+      };
+
+      const questions = [
+        [
+          "A1",
+          "Ich ___ aus Tunesien.",
+          ["bin", "bist", "ist", "seid"],
+          0,
+          "With ich, use bin: Ich bin aus Tunesien.",
+        ],
+        [
+          "A1",
+          "Wie ___ du?",
+          ["heiße", "heißt", "heißen", "heiß"],
+          1,
+          "With du, heißen becomes heißt.",
+        ],
+        [
+          "A1",
+          "Das ist ___ Apfel.",
+          ["eine", "ein", "einen", "einer"],
+          1,
+          "Apfel is masculine; ein is used in this nominative sentence.",
+        ],
+        [
+          "A1",
+          "Wir ___ Deutsch.",
+          ["lernt", "lerne", "lernen", "lernst"],
+          2,
+          "Wir takes the verb form lernen.",
+        ],
+        [
+          "A1",
+          "___ Uhr ist es?",
+          ["Wie viel", "Wie viele", "Wer", "Wo"],
+          0,
+          "Wie viel Uhr ist es? asks for the time.",
+        ],
+        [
+          "A1",
+          "Ich habe ___ Bruder.",
+          ["eine", "einen", "ein", "einem"],
+          1,
+          "Bruder is masculine; haben takes the accusative: einen Bruder.",
+        ],
+        [
+          "A1",
+          "Sie ___ heute zu Hause.",
+          ["bin", "bist", "ist", "sind"],
+          2,
+          "Sie meaning she takes ist.",
+        ],
+        [
+          "A1",
+          "Was ist das Gegenteil von „kalt“?",
+          ["warm", "klein", "lang", "alt"],
+          0,
+          "Warm is the opposite of kalt (cold).",
+        ],
+        [
+          "A2",
+          "Gestern ___ ich einen Film gesehen.",
+          ["habe", "bin", "hat", "war"],
+          0,
+          "The perfect tense with sehen uses haben: ich habe gesehen.",
+        ],
+        [
+          "A2",
+          "Ich fahre morgen ___ Berlin.",
+          ["nach", "zu", "an", "bei"],
+          0,
+          "Use nach with cities: nach Berlin.",
+        ],
+        [
+          "A2",
+          "Kannst du mir bitte ___?",
+          ["helfen", "hilfst", "geholfen", "half"],
+          0,
+          "After modal können, use the infinitive: helfen.",
+        ],
+        [
+          "A2",
+          "Ich interessiere mich ___ Musik.",
+          ["über", "für", "an", "mit"],
+          1,
+          "The expression is sich interessieren für.",
+        ],
+        [
+          "A2",
+          "Wenn ich Zeit ___, besuche ich dich.",
+          ["habe", "hatte", "haben", "hätte"],
+          0,
+          "For a real condition, wenn ich Zeit habe.",
+        ],
+        [
+          "A2",
+          "Er steht jeden Morgen um 7 Uhr ___.",
+          ["auf", "an", "ein", "mit"],
+          0,
+          "Aufstehen is a separable verb: steht ... auf.",
+        ],
+        [
+          "A2",
+          "Ich trinke lieber Tee ___ Kaffee.",
+          ["als", "wie", "statt zu", "denn"],
+          0,
+          "Lieber ... als ... means rather ... than ...",
+        ],
+        [
+          "A2",
+          "Das Buch liegt ___ dem Tisch.",
+          ["auf", "in", "nach", "zu"],
+          0,
+          "Auf dem Tisch means on the table; dative for location.",
+        ],
+        [
+          "B1",
+          "Obwohl es regnete, ___ wir spazieren.",
+          ["gingen", "gehen", "gegangen", "ging"],
+          0,
+          "Obwohl introduces a subordinate clause; gingen is the past plural form.",
+        ],
+        [
+          "B1",
+          "Ich weiß nicht, ___ er heute kommt.",
+          ["ob", "wenn", "als", "dass ob"],
+          0,
+          "Ob introduces an indirect yes/no question.",
+        ],
+        [
+          "B1",
+          "Sie hat vergessen, die Tür ___.",
+          ["abschließen", "abzuschließen", "abgeschlossen", "schließt ab"],
+          1,
+          "After vergessen, an infinitive clause with zu is used.",
+        ],
+        [
+          "B1",
+          "Seit zwei Jahren ___ er in München.",
+          ["wohnt", "wohnte", "gewohnt", "wohnen"],
+          0,
+          "Seit with an ongoing situation normally uses present tense.",
+        ],
+        [
+          "B1",
+          "Wenn ich mehr Geld hätte, ___ ich eine Reise machen.",
+          ["werde", "würde", "habe", "bin"],
+          1,
+          "Hypothetical conditions use Konjunktiv II.",
+        ],
+        [
+          "B1",
+          "Das ist der Mann, ___ mir geholfen hat.",
+          ["der", "den", "dem", "dessen"],
+          0,
+          "Der is the subject of the relative clause.",
+        ],
+        [
+          "B1",
+          "Ich freue mich ___ deinen Besuch.",
+          ["auf", "über zu", "an", "von"],
+          0,
+          "Sich freuen auf is used for an anticipated event.",
+        ],
+        [
+          "B1",
+          "Er fragte mich, wo ich ___.",
+          ["wohne", "wohnte", "wohnen", "gewohnt"],
+          1,
+          "Reported speech commonly shifts the tense in this sentence.",
+        ],
+        [
+          "B1",
+          "Nachdem sie gegessen ___, ging sie schlafen.",
+          ["hat", "hatte", "ist", "wird"],
+          1,
+          "Plusquamperfekt: nachdem sie gegessen hatte.",
+        ],
+        [
+          "B2",
+          "Je mehr du übst, ___ wirst du.",
+          ["desto besser", "besser desto", "so gut", "am besten"],
+          0,
+          "The paired structure is je ..., desto ...",
+        ],
+        [
+          "B2",
+          "Er behauptet, nichts davon ___ zu haben.",
+          ["wissen", "gewusst", "wusste", "weiß"],
+          1,
+          "The perfect infinitive is nichts davon gewusst zu haben.",
+        ],
+        [
+          "B2",
+          "Die Entscheidung muss bis morgen ___ werden.",
+          ["treffen", "getroffen", "trifft", "traf"],
+          1,
+          "Passive with a modal: muss ... getroffen werden.",
+        ],
+        [
+          "B2",
+          "Hätte ich das früher gewusst, ___ ich anders gehandelt.",
+          ["habe", "hatte", "hätte", "werde"],
+          2,
+          "Unreal past condition: hätte ich ... gehandelt.",
+        ],
+        [
+          "B2",
+          "Sie bestand ___, rechtzeitig informiert zu werden.",
+          ["darauf", "damit", "daran", "dafür"],
+          0,
+          "Bestehen darauf means to insist on something.",
+        ],
+        [
+          "B2",
+          "Nicht nur der Lehrer, sondern auch die Schüler ___ anwesend.",
+          ["war", "ist", "waren", "wird"],
+          2,
+          "The plural subject takes waren.",
+        ],
+        [
+          "B2",
+          "Es ist wichtig, dass die Unterlagen rechtzeitig ___ werden.",
+          ["einreichen", "eingereicht", "eingereichen", "reichte"],
+          1,
+          "Passive subordinate clause: eingereicht werden.",
+        ],
+        [
+          "B2",
+          "Er tut so, als ___ er alles verstanden.",
+          ["hat", "hätte", "hatte", "haben"],
+          1,
+          "Als with an unreal comparison can use Konjunktiv II.",
+        ],
+        [
+          "B2",
+          "Die Firma, ___ Produkte wir kaufen, ist bekannt.",
+          ["deren", "dessen", "der", "die"],
+          0,
+          "Deren is the genitive relative pronoun for a feminine antecedent.",
+        ],
+        [
+          "C1",
+          "Die Ergebnisse stehen im Widerspruch ___ bisherigen Annahmen.",
+          ["zu den", "mit die", "an den", "für die"],
+          0,
+          "The phrase is im Widerspruch zu.",
+        ],
+        [
+          "C1",
+          "Kaum ___ der Vortrag begonnen, fiel der Strom aus.",
+          ["hatte", "hat", "wurde", "war"],
+          0,
+          "Kaum ... hatte ... is a narrative construction.",
+        ],
+        [
+          "C1",
+          "Er verhielt sich, ___ wäre nichts geschehen.",
+          ["als", "dass", "ob", "wenn"],
+          0,
+          "Als wäre nichts geschehen means as if nothing had happened.",
+        ],
+        [
+          "C1",
+          "Die Maßnahme wurde beschlossen, ___ die Kosten zu senken.",
+          ["damit", "um", "obwohl", "indem dass"],
+          1,
+          "Um ... zu expresses purpose with the same subject.",
+        ],
+        [
+          "C1",
+          "Weder die Gründe noch die Folgen ___ eindeutig.",
+          ["ist", "war", "sind", "wird"],
+          2,
+          "The plural subject here takes sind.",
+        ],
+        [
+          "C1",
+          "Die Autorin setzt sich kritisch ___ der These auseinander.",
+          ["mit", "für", "zu", "über"],
+          0,
+          "Sich auseinandersetzen mit means to examine critically.",
+        ],
+        [
+          "C1",
+          "Es mangelt dem Bericht ___ belastbaren Beweisen.",
+          ["an", "mit", "für", "über"],
+          0,
+          "Es mangelt an takes dative.",
+        ],
+        [
+          "C1",
+          "Das Vorhaben scheiterte, nicht zuletzt ___ fehlender Finanzierung.",
+          ["wegen", "trotz", "außer", "gegen"],
+          0,
+          "Wegen fehlender Finanzierung means due to insufficient funding.",
+        ],
+        [
+          "C2",
+          "Die Aussage ist insofern problematisch, ___ sie zentrale Aspekte ausblendet.",
+          ["als", "dass", "ob", "wenn auch"],
+          0,
+          "Insofern ..., als ... introduces the respect in which a claim applies.",
+        ],
+        [
+          "C2",
+          "Er entkräftete den Vorwurf, ___ er auf die widersprüchlichen Belege verwies.",
+          ["indem", "obwohl", "sodass", "während"],
+          0,
+          "Indem explains the means by which he refuted the accusation.",
+        ],
+        [
+          "C2",
+          "Die These lässt sich kaum aufrechterhalten, ___ man die neuen Daten berücksichtigt.",
+          ["sofern", "geschweige denn", "ungeachtet", "zumal dass"],
+          0,
+          "Sofern means provided that or if.",
+        ],
+        [
+          "C2",
+          "Seine Argumentation ist schlüssig, ___ sie einige Prämissen voraussetzt.",
+          ["wiewohl", "sodass", "folglich", "damit"],
+          0,
+          "Wiewohl is a formal conjunction meaning although.",
+        ],
+        [
+          "C2",
+          "Die Reform zeitigte Folgen, deren Tragweite zunächst kaum ___ wurde.",
+          ["abzusehen", "abgesehen", "vorzusehen", "nachzusehen"],
+          0,
+          "Abzusehen means to foresee.",
+        ],
+        [
+          "C2",
+          "Der Bericht ist keineswegs erschöpfend, geschweige denn ___.",
+          ["abschließend", "abschließen", "abschloss", "abgeschlossen werden"],
+          0,
+          "Abschließend means conclusive.",
+        ],
+        [
+          "C2",
+          "Sie formulierte ihre Kritik derart diplomatisch, dass kaum jemand Anstoß daran ___.",
+          ["nahm", "nahmen", "nimmt", "genommen"],
+          0,
+          "Anstoß nehmen means to take offence.",
+        ],
+        [
+          "C2",
+          "Ungeachtet ___ Einwände wurde der Vorschlag angenommen.",
+          ["sämtlicher", "sämtliche", "sämtlichen", "sämtlichem"],
+          0,
+          "Ungeachtet commonly takes the genitive.",
+        ],
+      ];
+
+      const $ = (id) => document.getElementById(id);
+      let lang = "en",
+        index = 0,
+        answers = Array(questions.length).fill(null);
+      let remaining = 1800,
+        timerId = null,
+        startedAt = 0,
+        finishedAt = 0,
+        ended = false;
+
+      function tr(key) {
+        return translations[lang][key] || translations.en[key] || key;
+      }
+      function levelName(level) {
+        const levels = ["A1", "A2", "B1", "B2", "C1", "C2"];
+        return level + " · " + tr("levels")[levels.indexOf(level)];
+      }
+      function setLanguage(value) {
+        lang = value;
+        document.documentElement.lang = value;
+        document.querySelectorAll("[data-t]").forEach((el) => {
+          const key = el.dataset.t;
+          if (translations[lang][key]) el.innerHTML = translations[lang][key];
+        });
+        if (!$("quiz").classList.contains("hidden")) renderQuestion();
+        if (!$("result").classList.contains("hidden") && ended) renderResults();
+        if (!$("review").classList.contains("hidden")) renderReview();
+      }
+      $("language").addEventListener("change", (e) =>
+        setLanguage(e.target.value),
+      );
+
+      function show(section) {
+        ["welcome", "startCard", "quiz", "result", "review"].forEach((id) =>
+          $(id).classList.add("hidden"),
+        );
+        if (section === "welcome") {
+          $("welcome").classList.remove("hidden");
+          $("startCard").classList.remove("hidden");
+        } else $(section).classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      function startTest() {
+        clearInterval(timerId);
+        index = 0;
+        answers = Array(questions.length).fill(null);
+        remaining = 1800;
+        ended = false;
+        finishedAt = 0;
+        startedAt = Date.now();
+        show("quiz");
+        renderQuestion();
+        startTimer();
+      }
+      function startTimer() {
+        timerId = setInterval(() => {
+          remaining--;
+          updateTimer();
+          if (remaining <= 0) {
+            clearInterval(timerId);
+            finishTest(true);
+          }
+        }, 1000);
+        updateTimer();
+      }
+      function updateTimer() {
+        const m = Math.floor(Math.max(0, remaining) / 60)
+          .toString()
+          .padStart(2, "0");
+        const s = (Math.max(0, remaining) % 60).toString().padStart(2, "0");
+        $("timer").textContent = m + ":" + s;
+        $("timer").classList.toggle("warning", remaining <= 300);
+      }
+      function renderQuestion() {
+        const q = questions[index];
+        $("questionCount").textContent =
+          tr("question") +
+          " " +
+          (index + 1) +
+          " " +
+          tr("of") +
+          " " +
+          questions.length;
+        $("progress").style.width =
+          ((index + 1) / questions.length) * 100 + "%";
+        $("levelTag").textContent = levelName(q[0]);
+        $("question").textContent = q[1];
+        $("options").innerHTML = "";
+        q[2].forEach((option, i) => {
+          const b = document.createElement("button");
+          b.className = "option" + (answers[index] === i ? " selected" : "");
+          const letter = document.createElement("span");
+          letter.className = "letter";
+          letter.textContent = String.fromCharCode(65 + i);
+          const text = document.createElement("span");
+          text.textContent = option;
+          b.append(letter, text);
+          b.addEventListener("click", () => {
+            if (!ended) {
+              answers[index] = i;
+              renderQuestion();
+            }
+          });
+          $("options").appendChild(b);
+        });
+        $("feedback").classList.add("hidden");
+        $("prevBtn").disabled = index === 0;
+        $("nextBtn").textContent =
+          index === questions.length - 1 ? tr("finish") : tr("next");
+        $("nextBtn").onclick = () => {
+          if (index === questions.length - 1) finishTest(false);
+          else {
+            index++;
+            renderQuestion();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        };
+        $("prevBtn").onclick = () => {
+          if (index > 0) {
+            index--;
+            renderQuestion();
+          }
+        };
+      }
+      function finishTest(timeUp) {
+        if (ended) return;
+        if (!timeUp && !confirm(tr("confirmFinish"))) return;
+        ended = true;
+        clearInterval(timerId);
+        finishedAt = Date.now();
+        if (timeUp) alert(tr("timeUp"));
+        show("result");
+        renderResults();
+      }
+      function calculate() {
+        const correct = answers.reduce(
+          (sum, a, i) => sum + (a === questions[i][3] ? 1 : 0),
+          0,
+        );
+        return {
+          correct,
+          percent: Math.round((correct / questions.length) * 100),
+        };
+      }
+      function estimateLevel(percent) {
+        if (percent < 20) return "A1";
+        if (percent < 35) return "A2";
+        if (percent < 50) return "B1";
+        if (percent < 65) return "B2";
+        if (percent < 82) return "C1";
+        return "C2";
+      }
+      function renderResults() {
+        const { correct, percent } = calculate(),
+          level = estimateLevel(percent);
+        $("score").innerHTML =
+          correct + " <small>/ " + questions.length + "</small>";
+        $("resultLevel").textContent = levelName(level);
+        $("percent").textContent = percent + "%";
+        $("correctCount").textContent = correct;
+        const elapsed = Math.max(
+          0,
+          Math.floor((finishedAt - startedAt) / 1000),
+        );
+        $("timeUsed").textContent =
+          Math.floor(elapsed / 60) +
+          ":" +
+          String(elapsed % 60).padStart(2, "0");
+        $("resultDescription").textContent =
+          tr("scoreText").replace("{n}", correct).replace("{p}", percent) +
+          " " +
+          tr("descriptions")[
+            ["A1", "A2", "B1", "B2", "C1", "C2"].indexOf(level)
+          ];
+        const advice =
+          percent < 35
+            ? tr("adviceLow")
+            : percent < 65
+              ? tr("adviceMid")
+              : percent < 82
+                ? tr("adviceHigh")
+                : tr("adviceTop");
+        $("advice").innerHTML = '<div class="advice"></div>';
+        $("advice").firstElementChild.textContent = advice;
+      }
+      function renderReview() {
+        $("reviewList").innerHTML = "";
+        questions.forEach((q, i) => {
+          const chosen = answers[i],
+            correct = q[3],
+            item = document.createElement("div");
+          item.className = "review-item";
+          const title = document.createElement("h3");
+          title.textContent = i + 1 + ". [" + q[0] + "] " + q[1];
+          const result = document.createElement("p");
+          result.className = chosen === correct ? "good" : "bad";
+          result.textContent =
+            chosen === correct ? "✓ " + tr("right") : "✗ " + tr("wrong");
+          const your = document.createElement("p");
+          your.className = "review-answer";
+          your.textContent =
+            tr("yourAnswer") +
+            ": " +
+            (chosen === null ? tr("unanswered") : q[2][chosen]);
+          const answer = document.createElement("p");
+          answer.className = "review-answer";
+          answer.textContent = tr("correctAnswer") + ": " + q[2][correct];
+          const explanation = document.createElement("p");
+          explanation.className = "review-answer";
+          explanation.textContent = tr("explanation") + ": " + q[4];
+          item.append(title, result, your, answer, explanation);
+          $("reviewList").appendChild(item);
+        });
+      }
+      $("startBtn").addEventListener("click", startTest);
+      $("reviewBtn").addEventListener("click", () => {
+        show("review");
+        renderReview();
+      });
+      $("backResultBtn").addEventListener("click", () => {
+        show("result");
+        renderResults();
+      });
+      $("retryBtn").addEventListener("click", startTest);
+      $("retryBtn2").addEventListener("click", startTest);
+      setLanguage("en");
+    </script>
+  </body>
+</html>
